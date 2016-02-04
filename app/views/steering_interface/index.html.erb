@@ -1,0 +1,76 @@
+
+<html>
+    <body>
+
+        <hr>
+
+        <div class="container">
+          <img src="/images/karpik.png" alt="logo?">
+        </div>
+
+        <hr>
+
+        <div class="container">
+          <h3>Basic steurung</h3>
+          <%= link_to "stop", controller: "steering_interface", action: "steering", left: "0", right: "0", left_pwr: "0", right_pwr: "0", remote: true %>
+          <%= link_to "turn left", controller: "steering_interface", action: "steering", left: "1", right: "0", left_pwr: "50", right_pwr: "50", remote: true %>
+          <%= link_to "turn right", controller: "steering_interface", action: "steering", left: "0", right: "1", left_pwr: "50", right_pwr: "50", remote: true %>
+          <%= link_to "forward", controller: "steering_interface", action: "steering", left: "1", right: "1", left_pwr: "75", right_pwr: "75", remote: true %>
+          <%= link_to "backward", controller: "steering_interface", action: "steering", left: "0", right: "0", left_pwr: "75", right_pwr: "75", remote: true %>
+          <%= link_to "panzer vor", controller: "steering_interface", action: "steering", left: "1", right: "1", left_pwr: "80", right_pwr: "80", remote: true%>
+          <%= link_to "n-n-nope", controller: "steering_interface", action: "steering", left: "0", right: "0", left_pwr: "50", right_pwr: "50", remote: true%>
+        </div>
+
+        <hr>
+
+        <div class="container">
+          <h3>Making custom requests</h3>
+          <p>This robot will respond to GET requests.</p>
+          <p>An example request would be something like that: <code>/steering?left=0&right=1&left_pwr=42&right_pwr=44</code></p>
+          <table class="table">
+            <thead>
+                <tr>
+                    <th>name</th>
+                    <th>description</th>
+                    <th>values</th>
+                </tr>
+            </thead>
+            <tr>
+              <td>left</td>
+              <td>corresponds to the left motor</td>
+              <td>0 or 1</td>
+            </tr>
+            <tr>
+              <td>right</td>
+              <td>corresponds to the right motor</td>
+              <td>0 or 1</td>
+            </tr>
+            <tr>
+              <td>left_pwr</td>
+              <td>specifies the power of the left motor, in percent</td>
+              <td>0 to 100</td>
+            </tr>
+            <tr>
+              <td>right_pwr</td>
+              <td>specifies the power of the right motor, in percent</td>
+              <td>0 to 100</td>
+            </tr>
+          </table>
+          <p>If a value is not specified, it is set to 0. <i>(Yes, this also means that GET /steering sends a 0, 0, 0, 0 command to the robot.)</i></p>
+          <p>Any non-numeric values will be set to 0.</p>
+          <p>The server responds with {"status":"fail"} if any of the parameters exceed the range (for example ?left_pwr=420 will fail).</p>
+        </div>
+
+        <hr>
+
+        <div class="container">
+          <h3>Credits</h3>
+          <p>Adrian 'adrian17' Wielgosik - raw robot controller (Python), fixing broken Ubuntu installations</p>
+          <p>Dawid 'daaave' Kurpiewski - robotics, Arduino</p>
+          <p>Piotr 'p137' Górni - Ruby on Rails interface, project logo</p>
+          <p>Piotr 'Materac' Matera - Android application, electric support, a ton of tools and a Volvo S90</p>
+          <p>Thanks to Karolina 'Aqua' Krawet for motivating the team!</p>
+        </div>
+
+    </body>
+</html>
